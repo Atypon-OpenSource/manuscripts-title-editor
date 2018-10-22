@@ -1,6 +1,6 @@
 import { Schema } from 'prosemirror-model'
 
-export type Nodes = 'title'
+export type Nodes = 'text' | 'title'
 export type Marks = 'italic' | 'smallcaps' | 'subscript' | 'superscript'
 
 export const schema = new Schema<Nodes, Marks>({
@@ -37,6 +37,7 @@ export const schema = new Schema<Nodes, Marks>({
     },
   },
   nodes: {
+    text: {},
     title: {
       content: 'text*',
       marks: 'italic smallcaps subscript superscript',
