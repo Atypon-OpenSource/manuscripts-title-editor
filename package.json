@@ -1,7 +1,7 @@
 {
   "name": "@manuscripts/title-editor",
   "description": "React components for editing and viewing a manuscript title",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": "https://gitlab.com/mpapp-private/manuscripts-title-editor",
   "license": "Apache-2.0",
   "main": "dist/index.js",
@@ -13,6 +13,7 @@
     "build": "rimraf dist && rollup -c",
     "typecheck": "tsc --noEmit",
     "lint": "tslint --project tsconfig.json",
+    "prepublishOnly": "yarn typecheck && yarn lint && yarn build",
     "prettier": "prettier --write \"{src}/**/*.{ts,tsx}\""
   },
   "publishConfig": {
