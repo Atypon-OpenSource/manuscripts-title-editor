@@ -5,9 +5,14 @@ import { parse } from '../parse'
 import { plugins } from '../plugins'
 import { schema } from '../schema'
 import { serialize } from '../serialize'
-import { Props, Title } from './Title'
+import { Title, TitleProps } from './Title'
 
-export class TitleField extends Title {
+interface Props extends TitleProps {
+  handleChange?: (value: string) => void
+  handleFocus?: (view: EditorView, event: Event) => boolean
+}
+
+export class TitleField extends Title<Props> {
   public constructor(props: Props) {
     super(props)
 

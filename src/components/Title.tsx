@@ -4,14 +4,13 @@ import React from 'react'
 import { parse } from '../parse'
 import { schema } from '../schema'
 
-export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface TitleProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   id?: string
   value?: string
-  handleChange?: (value: string) => void
-  handleFocus?: (view: EditorView, event: Event) => boolean
 }
 
-export class Title extends React.Component<Props> {
+export class Title<Props extends TitleProps> extends React.Component<Props> {
   protected editorRef: React.RefObject<HTMLDivElement>
   protected view: EditorView
 
