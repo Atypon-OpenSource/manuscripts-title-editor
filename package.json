@@ -1,7 +1,7 @@
 {
   "name": "@manuscripts/title-editor",
   "description": "React components for editing and viewing a manuscript title",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "repository": "https://gitlab.com/mpapp-private/manuscripts-title-editor",
   "license": "Apache-2.0",
   "main": "dist/index.js",
@@ -20,7 +20,10 @@
     "lint": "tslint --project tsconfig.json",
     "prepublishOnly": "yarn typecheck && yarn lint && yarn build",
     "prettier": "prettier --write \"{src}/**/*.{ts,tsx}\"",
-    "test": "jest"
+    "test": "jest",
+    "preversion": "yarn test",
+    "version": "yarn build",
+    "postversion": "git push && git push --tags"
   },
   "publishConfig": {
     "@manuscripts:registry": "https://atypon-npm-registry.herokuapp.com/"
