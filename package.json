@@ -32,6 +32,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
     "@types/jest": "^23.3.7",
+    "@types/jsdom": "^12.2.0",
     "@types/prosemirror-commands": "^1.0.0",
     "@types/prosemirror-history": "^1.0.0",
     "@types/prosemirror-keymap": "^1.0.0",
@@ -45,13 +46,8 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "husky": "^1.1.2",
     "jest": "^23.6.0",
+    "jsdom": "^12.2.0",
     "prettier": "^1.10.2",
-    "prosemirror-commands": "^1.0.4",
-    "prosemirror-history": "^1.0.0",
-    "prosemirror-keymap": "^1.0.0",
-    "prosemirror-model": "^1.6.2",
-    "prosemirror-state": "^1.2.2",
-    "prosemirror-view": "^1.6.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "rimraf": "^2.6.2",
@@ -66,13 +62,15 @@
     "typescript": "^3.0.1"
   },
   "peerDependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "dependencies": {
     "prosemirror-commands": "^1.0.4",
     "prosemirror-history": "^1.0.0",
     "prosemirror-keymap": "^1.0.0",
     "prosemirror-model": "^1.6.2",
     "prosemirror-state": "^1.2.2",
-    "prosemirror-view": "^1.6.3",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "prosemirror-view": "^1.6.3"
   }
 }
