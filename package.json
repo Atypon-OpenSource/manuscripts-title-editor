@@ -21,9 +21,8 @@
     "prepublishOnly": "yarn typecheck && yarn lint && yarn build",
     "prettier": "prettier --write \"{src}/**/*.{ts,tsx}\"",
     "test": "jest",
-    "preversion": "yarn test",
-    "version": "yarn build",
-    "postversion": "git push && git push --tags"
+    "preversion": "yarn typecheck && yarn lint && yarn test",
+    "version": "yarn build"
   },
   "publishConfig": {
     "@manuscripts:registry": "https://atypon-npm-registry.herokuapp.com/"
