@@ -1,0 +1,24 @@
+body {
+  font-family: sans-serif;
+}
+
+.title-editor-input {
+  position: relative;
+}
+
+.title-editor {
+  font-size: 18px;
+}
+
+.title-editor:focus {
+  outline: none;
+}
+
+output {
+  font-family: monospace;
+  padding: 20px;
+  background: #f6f6f6;
+  color: #444;
+  display: block;
+  margin-top: 20px;
+}

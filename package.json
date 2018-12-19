@@ -18,6 +18,7 @@
     "build": "npm-run-all --parallel build:*",
     "build:cjs": "tsc --outDir dist/cjs --module commonjs",
     "build:es": "tsc --outDir dist/es --declarationDir dist/types --declaration",
+    "bundle": "parcel build src/index.ts --out-dir demo --global ManuscriptsTitleEditor --no-source-maps",
     "dev": "tsc --outDir dist/es --watch",
     "lint": "tslint --project .",
     "prebuild": "rimraf dist",
