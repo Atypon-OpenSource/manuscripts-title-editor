@@ -65,7 +65,10 @@ export class TitleField extends Title<Props> {
   }
 
   public componentDidMount() {
-    this.editorRef.current!.appendChild(this.view.dom)
+    if (this.editorRef.current) {
+      this.editorRef.current.appendChild(this.view.dom)
+    }
+
     this.updateClassList()
 
     if (this.props.autoFocus) {

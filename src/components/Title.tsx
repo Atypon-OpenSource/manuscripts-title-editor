@@ -37,6 +37,7 @@ export class Title<Props extends TitleProps> extends React.Component<Props> {
     if (this.editorRef.current) {
       this.editorRef.current.appendChild(this.view.dom)
     }
+
     this.updateClassList()
   }
 
