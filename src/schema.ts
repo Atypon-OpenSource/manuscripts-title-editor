@@ -2,8 +2,9 @@ import { Schema } from 'prosemirror-model'
 
 export type Nodes = 'text' | 'title'
 export type Marks = 'italic' | 'smallcaps' | 'subscript' | 'superscript'
+export type TitleSchema = Schema<Nodes, Marks>
 
-export const schema = new Schema<Nodes, Marks>({
+export const schema: TitleSchema = new Schema<Nodes, Marks>({
   marks: {
     italic: {
       parseDOM: [{ tag: 'i' }, { tag: 'em' }, { style: 'font-style=italic' }],
