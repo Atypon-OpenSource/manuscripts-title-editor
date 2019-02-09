@@ -1,8 +1,12 @@
 import { Schema } from 'prosemirror-model'
+import { EditorState } from 'prosemirror-state'
+import { EditorView } from 'prosemirror-view'
 
 export type Nodes = 'text' | 'title'
 export type Marks = 'italic' | 'smallcaps' | 'subscript' | 'superscript'
 export type TitleSchema = Schema<Nodes, Marks>
+export type TitleEditorState = EditorState<TitleSchema>
+export type TitleEditorView = EditorView<TitleSchema>
 
 export const schema: TitleSchema = new Schema<Nodes, Marks>({
   marks: {

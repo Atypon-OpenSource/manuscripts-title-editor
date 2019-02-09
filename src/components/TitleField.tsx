@@ -3,13 +3,13 @@ import { EditorView } from 'prosemirror-view'
 import React from 'react'
 import { parse } from '../parse'
 import { plugins } from '../plugins'
-import { schema } from '../schema'
+import { schema, TitleEditorView, TitleSchema } from '../schema'
 import { serialize } from '../serialize'
 import { Title, TitleProps } from './Title'
 
 interface Props extends TitleProps {
   handleChange?: (value: string) => void
-  handleFocus?: (view: EditorView, event: Event) => boolean
+  handleStateChange?: (view: TitleEditorView, docChanged: boolean) => void
 }
 
 export class TitleField extends Title<Props> {
@@ -26,7 +26,7 @@ export class TitleField extends Title<Props> {
       attributes.tabindex = String(this.props.tabIndex)
     }
 
-    this.view = new EditorView(undefined, {
+    this.view = new EditorView<TitleSchema>(undefined, {
       attributes,
       dispatchTransaction: transaction => {
         const { state, transactions } = this.view.state.applyTransaction(
@@ -36,15 +36,24 @@ export class TitleField extends Title<Props> {
         this.view.updateState(state)
         this.updateClassList()
 
-        if (this.props.handleChange && transactions.some(tr => tr.docChanged)) {
+        const docChanged = transactions.some(tr => tr.docChanged)
+
+        if (this.props.handleStateChange) {
+          this.props.handleStateChange(this.view, docChanged)
+        }
+
+        // TODO: debounce this to reduce serialization
+        if (this.props.handleChange && docChanged) {
           this.props.handleChange(serialize(state.doc))
         }
       },
       handleDOMEvents: {
-        focus: (view, event) => {
-          return this.props.handleFocus
-            ? this.props.handleFocus(view, event)
-            : false
+        focus: view => {
+          if (this.props.handleStateChange) {
+            this.props.handleStateChange(view, false)
+          }
+
+          return false
         },
       },
       handleKeyDown: (view, event) => {
@@ -56,7 +65,7 @@ export class TitleField extends Title<Props> {
 
         return false
       },
-      state: EditorState.create({
+      state: EditorState.create<TitleSchema>({
         doc: parse(props.value),
         plugins,
         schema,
@@ -79,7 +88,7 @@ export class TitleField extends Title<Props> {
   public componentWillReceiveProps(nextProps: Props) {
     if (!this.view.hasFocus()) {
       this.view.updateState(
-        EditorState.create({
+        EditorState.create<TitleSchema>({
           doc: parse(nextProps.value),
           plugins: this.view.state.plugins,
           schema: this.view.state.schema,

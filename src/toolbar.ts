@@ -16,7 +16,7 @@ const markActive = (type: MarkType) => (
 }
 
 export const toolbar: ToolbarConfig<TitleSchema> = {
-  formatting: {
+  style: {
     italic: {
       title: 'Toggle italic',
       content: icons.italic,
@@ -31,6 +31,8 @@ export const toolbar: ToolbarConfig<TitleSchema> = {
       enable: toggleMark(schema.marks.smallcaps),
       run: toggleMark(schema.marks.smallcaps),
     },*/
+  },
+  vertical: {
     subscript: {
       title: 'Toggle subscript',
       content: icons.subscript,
