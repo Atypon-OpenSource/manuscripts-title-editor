@@ -1,14 +1,10 @@
 module.exports = {
   env: {
     development: {
-      plugins: [
-        'react-hot-loader/babel',
-      ],
+      plugins: ['react-hot-loader/babel'],
     },
     test: {
-      plugins: [
-        'transform-es2015-modules-commonjs',
-      ],
+      plugins: ['transform-es2015-modules-commonjs'],
     },
   },
   plugins: [
