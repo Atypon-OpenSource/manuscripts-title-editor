@@ -26,6 +26,7 @@ import { Title, TitleProps } from './Title'
 interface Props extends TitleProps {
   handleChange?: (value: string) => void
   handleStateChange?: (view: TitleEditorView, docChanged: boolean) => void
+  editable?: boolean
 }
 
 export class TitleField extends Title<Props> {
@@ -44,6 +45,8 @@ export class TitleField extends Title<Props> {
 
     this.view = new EditorView<TitleSchema>(undefined, {
       attributes,
+      editable: () =>
+        this.props.editable === undefined ? true : this.props.editable,
       dispatchTransaction: transaction => {
         const { state, transactions } = this.view.state.applyTransaction(
           transaction
