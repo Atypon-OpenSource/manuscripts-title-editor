@@ -705,6 +705,11 @@
   resolved "https://atypon-npm-registry.herokuapp.com/@manuscripts%2fassets/-/assets-0.3.0.tgz#2f1937a7256b2550610228f2514d9c5f6d1c033d"
   integrity sha512-UzIe9kcmjuWYV7fQEojKzai7RLGA6zLqWOhc7OEAiTV35mV+I/XhVTvEPxNwuDPhG1Y1ygxkIWjKaB1RYpTThg==
 
+"@manuscripts/publish@^0.1.3":
+  version "0.1.3"
+  resolved "https://atypon-npm-registry.herokuapp.com/@manuscripts%2fpublish/-/publish-0.1.3.tgz#eabab2b88d117f0b587e4948a17935135730e112"
+  integrity sha512-IdazKqRDXWWq0iTUjejaibo25uIAJ1++FzS0gzw3CaBWHYfmDLTbjr0ee2sJa/bTr50SrVNKcrAUrf+Ug9krtQ==
+
 "@manuscripts/tslint-config@^0.1.0":
   version "0.1.0"
   resolved "https://atypon-npm-registry.herokuapp.com/@manuscripts%2ftslint-config/-/tslint-config-0.1.0.tgz#05c9e1b13a7991fa0a17d6ded254bf25744d7edb"
