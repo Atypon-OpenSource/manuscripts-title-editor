@@ -25,6 +25,7 @@ import { Title, TitleProps } from './Title'
 
 interface Props extends TitleProps {
   handleChange?: (value: string) => void
+  handleFocused?: (focused: boolean) => void
   handleStateChange?: (view: TitleEditorView, docChanged: boolean) => void
   editable?: boolean
 }
@@ -67,9 +68,20 @@ export class TitleField extends Title<Props> {
         }
       },
       handleDOMEvents: {
+        blur: () => {
+          if (this.props.handleFocused) {
+            this.props.handleFocused(false)
+          }
+
+          return false
+        },
         focus: view => {
           if (this.props.handleStateChange) {
             this.props.handleStateChange(view, false)
+          }
+
+          if (this.props.handleFocused) {
+            this.props.handleFocused(true)
           }
 
           return false
