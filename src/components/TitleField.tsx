@@ -17,6 +17,7 @@
 import { EditorState } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import React from 'react'
+
 import { parse } from '../parse'
 import { plugins } from '../plugins'
 import { schema, TitleEditorView, TitleSchema } from '../schema'
@@ -48,7 +49,7 @@ export class TitleField extends Title<Props> {
       attributes,
       editable: () =>
         this.props.editable === undefined ? true : this.props.editable,
-      dispatchTransaction: transaction => {
+      dispatchTransaction: (transaction) => {
         const { state, transactions } = this.view.state.applyTransaction(
           transaction
         )
@@ -56,7 +57,7 @@ export class TitleField extends Title<Props> {
         this.view.updateState(state)
         this.updateClassList()
 
-        const docChanged = transactions.some(tr => tr.docChanged)
+        const docChanged = transactions.some((tr) => tr.docChanged)
 
         if (this.props.handleStateChange) {
           this.props.handleStateChange(this.view, docChanged)
@@ -75,7 +76,7 @@ export class TitleField extends Title<Props> {
 
           return false
         },
-        focus: view => {
+        focus: (view) => {
           if (this.props.handleStateChange) {
             this.props.handleStateChange(view, false)
           }

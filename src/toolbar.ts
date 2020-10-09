@@ -17,6 +17,7 @@
 import { toggleMark } from 'prosemirror-commands'
 import { MarkType } from 'prosemirror-model'
 import { EditorState } from 'prosemirror-state'
+
 import { ToolbarConfig } from './components/TitleToolbar'
 import icons from './icons'
 import { schema, TitleSchema } from './schema'

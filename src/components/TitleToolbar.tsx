@@ -19,7 +19,7 @@ import { EditorState, Transaction } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import React from 'react'
 import styled from 'styled-components'
-import { TitleSchema } from '../schema'
+
 import { toolbar } from '../toolbar'
 
 const ToolbarItem = styled.div`
@@ -32,17 +32,17 @@ const ToolbarButton = styled.button.attrs({
 })<{
   'data-active'?: boolean
 }>`
-  background-color: ${props =>
+  background-color: ${(props) =>
     props['data-active'] ? '#eee' : props.theme.colors.background.primary};
-  border: 1px solid ${props => props.theme.colors.border.secondary};
+  border: 1px solid ${(props) => props.theme.colors.border.secondary};
   cursor: pointer;
-  padding: 2px ${props => props.theme.grid.unit * 3}px;
+  padding: 2px ${(props) => props.theme.grid.unit * 3}px;
   display: inline-flex;
   align-items: center;
   transition: 0.2s all;
 
   &:hover {
-    background: ${props =>
+    background: ${(props) =>
       props['data-active'] ? '#eee' : props.theme.colors.background.secondary};
     z-index: 2;
   }
@@ -57,14 +57,14 @@ const ToolbarButton = styled.button.attrs({
 `
 
 export const ToolbarContainer = styled.div`
-  margin: ${props => props.theme.grid.unit}px;
+  margin: ${(props) => props.theme.grid.unit}px;
   display: flex;
   flex-wrap: wrap;
 `
 
 export const ToolbarGroup = styled.div`
-  margin-right: ${props => props.theme.grid.unit * 2}px;
-  margin-bottom: ${props => props.theme.grid.unit * 2}px;
+  margin-right: ${(props) => props.theme.grid.unit * 2}px;
+  margin-bottom: ${(props) => props.theme.grid.unit * 2}px;
   white-space: nowrap;
 
   & ${ToolbarItem} button {
@@ -76,13 +76,13 @@ export const ToolbarGroup = styled.div`
   }
 
   & ${ToolbarItem}:first-of-type button {
-    border-top-left-radius: ${props => props.theme.grid.radius.small}px;
-    border-bottom-left-radius: ${props => props.theme.grid.radius.small}px;
+    border-top-left-radius: ${(props) => props.theme.grid.radius.small}px;
+    border-bottom-left-radius: ${(props) => props.theme.grid.radius.small}px;
   }
 
   & ${ToolbarItem}:last-of-type button {
-    border-top-right-radius: ${props => props.theme.grid.radius.small}px;
-    border-bottom-right-radius: ${props => props.theme.grid.radius.small}px;
+    border-top-right-radius: ${(props) => props.theme.grid.radius.small}px;
+    border-bottom-right-radius: ${(props) => props.theme.grid.radius.small}px;
   }
 `
 
@@ -100,13 +100,9 @@ export interface ToolbarConfig<S extends Schema> {
   }
 }
 
-interface Props {
+export const TitleToolbar: React.FC<{
   view: EditorView
-}
-
-const Toolbar = <S extends Schema>(): React.FunctionComponent<Props> => ({
-  view,
-}) => (
+}> = ({ view }) => (
   <ToolbarContainer>
     {Object.entries(toolbar).map(([groupKey, toolbarGroup]) => (
       <ToolbarGroup key={groupKey}>
@@ -116,7 +112,7 @@ const Toolbar = <S extends Schema>(): React.FunctionComponent<Props> => ({
               title={item.title}
               data-active={item.active && item.active(view.state)}
               disabled={item.enable && !item.enable(view.state)}
-              onMouseDown={event => {
+              onMouseDown={(event) => {
                 event.preventDefault()
                 item.run(view.state, view.dispatch)
               }}
@@ -129,5 +125,3 @@ const Toolbar = <S extends Schema>(): React.FunctionComponent<Props> => ({
     ))}
   </ToolbarContainer>
 )
-
-export const TitleToolbar = Toolbar<TitleSchema>()
