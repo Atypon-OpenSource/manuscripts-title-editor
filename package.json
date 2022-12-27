@@ -2,7 +2,7 @@
   "name": "@manuscripts/title-editor",
   "description": "React components for editing and viewing a manuscript title",
   "version": "0.5.2",
-  "repository": "gitlab:mpapp-public/manuscripts-title-editor",
+  "repository": "github:Atypon-OpenSource/manuscripts-title-editor",
   "license": "Apache-2.0",
   "main": "dist/cjs",
   "module": "dist/es",
