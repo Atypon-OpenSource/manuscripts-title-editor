@@ -23,7 +23,7 @@ import icons from './icons'
 import { schema, TitleSchema } from './schema'
 
 const markActive = (type: MarkType) => (
-  state: EditorState<TitleSchema>
+  state: EditorState
 ): boolean => {
   const { from, $from, to, empty } = state.selection
 
@@ -32,7 +32,7 @@ const markActive = (type: MarkType) => (
     : state.doc.rangeHasMark(from, to, type)
 }
 
-export const toolbar: ToolbarConfig<TitleSchema> = {
+export const toolbar: ToolbarConfig = {
   style: {
     italic: {
       title: 'Toggle italic',

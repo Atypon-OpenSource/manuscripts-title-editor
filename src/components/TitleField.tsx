@@ -45,7 +45,7 @@ export class TitleField extends Title<Props> {
       attributes.tabindex = String(this.props.tabIndex)
     }
 
-    this.view = new EditorView<TitleSchema>(undefined, {
+    this.view = new EditorView(null, {
       attributes,
       editable: () =>
         this.props.editable === undefined ? true : this.props.editable,
@@ -97,7 +97,7 @@ export class TitleField extends Title<Props> {
 
         return false
       },
-      state: EditorState.create<TitleSchema>({
+      state: EditorState.create({
         doc: parse(props.value),
         plugins,
         schema,
@@ -120,7 +120,7 @@ export class TitleField extends Title<Props> {
   public componentWillReceiveProps(nextProps: Props) {
     if (!this.view.hasFocus()) {
       this.view.updateState(
-        EditorState.create<TitleSchema>({
+        EditorState.create({
           doc: parse(nextProps.value),
           plugins: this.view.state.plugins,
           schema: this.view.state.schema,
