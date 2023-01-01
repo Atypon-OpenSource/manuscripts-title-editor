@@ -20,7 +20,7 @@ import { EditorState } from 'prosemirror-state'
 
 import { ToolbarConfig } from './components/TitleToolbar'
 import icons from './icons'
-import { schema, TitleSchema } from './schema'
+import { schema } from './schema'
 
 const markActive = (type: MarkType) => (
   state: EditorState
