@@ -40,7 +40,7 @@ export class Title<Props extends TitleProps> extends React.Component<Props> {
       class: 'plain',
     }
 
-    this.view = new EditorView(undefined, {
+    this.view = new EditorView(null, {
       attributes,
       editable: () => false,
       state: EditorState.create({
