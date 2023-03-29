@@ -20,7 +20,7 @@ import React from 'react'
 
 import { parse } from '../parse'
 import { plugins } from '../plugins'
-import { schema, TitleEditorView, TitleSchema } from '../schema'
+import { schema, TitleEditorView } from '../schema'
 import { serialize } from '../serialize'
 import { Title, TitleProps } from './Title'
 
@@ -50,9 +50,8 @@ export class TitleField extends Title<Props> {
       editable: () =>
         this.props.editable === undefined ? true : this.props.editable,
       dispatchTransaction: (transaction) => {
-        const { state, transactions } = this.view.state.applyTransaction(
-          transaction
-        )
+        const { state, transactions } =
+          this.view.state.applyTransaction(transaction)
 
         this.view.updateState(state)
         this.updateClassList()
